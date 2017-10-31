@@ -1,4 +1,4 @@
-package com.jdkgroup.atomic.Validation;
+package com.jdkgroup.atomic.CountryCode;
 
 /**
  * Created by lakhani on 10/24/2017.

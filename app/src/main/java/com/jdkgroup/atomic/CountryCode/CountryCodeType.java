@@ -1,4 +1,4 @@
-package com.jdkgroup.atomic.Validation;
+package com.jdkgroup.atomic.CountryCode;
 
 import com.google.common.base.Predicate;
 import com.google.common.collect.Collections2;
@@ -14,20 +14,17 @@ import java.util.Locale;
  */
 
 public class CountryCodeType<T> {
-    private final CountryCodeCheck validationCheck;
-    private int validationType;
-
+    private final CountryCodeCheck countryCodeCheck;
     private String result;
 
-    public CountryCodeType(CountryCodeCheck validationCheck, int validationType) {
-        this.validationCheck = validationCheck;
-        this.validationType = validationType;
+    public CountryCodeType(CountryCodeCheck countryCodeCheck) {
+        this.countryCodeCheck = countryCodeCheck;
     }
 
     public void setCallback(final CountryCodeCallback callback) {
-        if (validationType == CountryCode.COUNTRY) {
-            result = validationCheck.gson.toJson(listAll(""));
-        } else if (validationType == CountryCode.COUNTRY_CODE) {
+        if (countryCodeCheck.countryCodeTypeType == CountryCode.COUNTRY) {
+            result = countryCodeCheck.gson.toJson(listAll(""));
+        } else if (countryCodeCheck.countryCodeTypeType == CountryCode.COUNTRY_CODE) {
             result = "COUNTRY CODE";
         }
         callback.onCompleted(result);

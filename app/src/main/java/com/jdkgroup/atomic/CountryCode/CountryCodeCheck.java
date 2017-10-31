@@ -1,15 +1,14 @@
-package com.jdkgroup.atomic.Validation;
+package com.jdkgroup.atomic.CountryCode;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.jdkgroup.atom.C;
 
 /**
  * Created by lakhani on 10/24/2017.
  */
 
 public class CountryCodeCheck {
-    private int countryCodeType;
+    public int countryCodeTypeType;
     public Gson gson;
 
     public CountryCodeCheck() {
@@ -17,14 +16,13 @@ public class CountryCodeCheck {
         gson = builder.create();
     }
 
-    public CountryCodeCheck countryCodeTypeType(int countryCodeType) {
-        this.countryCodeType = countryCodeType;
+    public CountryCodeCheck countryCodeTypeType(int countryCodeTypeType) {
+        this.countryCodeTypeType = countryCodeTypeType;
         return this;
     }
 
     public <T> CountryCodeType<T> as() {
-        CountryCodeType<T> c = new CountryCodeType<T>(this, countryCodeType);
+        CountryCodeType<T> c = new CountryCodeType<T>(this);
         return c;
     }
-
 }

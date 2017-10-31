@@ -6,9 +6,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.text.method.PasswordTransformationMethod;
 import android.widget.EditText;
 
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import com.jdkgroup.atom.Atom;
-import com.jdkgroup.atomic.Validation.CountryCode;
+import com.jdkgroup.atomic.CountryCode.CountryCode;
 import com.jdkgroup.atomic.R;
+import com.jdkgroup.atomic.CountryCode.ModelCountry;
+
+import java.util.List;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -22,11 +27,18 @@ public class LoginActivity extends AppCompatActivity {
         passwordEditText.setTransformationMethod(PasswordTransformationMethod.getInstance());
 
         CountryCode.with().countryCodeTypeType(CountryCode.COUNTRY).as().setCallback((result) -> {
-            System.out.println("Tag" + result.toString());
+            Gson gson = new Gson();
+            List<ModelCountry> list = gson.fromJson(result, new TypeToken<List<ModelCountry>>(){}.getType());
+            System.out.println("Tag" + list.size());
         });
 
         CountryCode.with().countryCodeTypeType(CountryCode.COUNTRY_CODE).as().setCallback((result) -> {
             System.out.println("Tag" + result);
+
+        });
+
+        com.jdkgroup.atomic.CountryCodeNew.Atom.with().type(1).as(ModelCountry.class).setCallback((List<ModelCountry> result) -> {
+            System.out.println("Tag" +result.get(0).getCode());
         });
 
         findViewById(R.id.button_login).setOnClickListener(v -> {
