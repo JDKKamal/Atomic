@@ -7,8 +7,7 @@ import android.text.method.PasswordTransformationMethod;
 import android.widget.EditText;
 
 import com.jdkgroup.atom.Atom;
-import com.jdkgroup.atomic.Validation.ErrorResponse;
-import com.jdkgroup.atomic.Validation.Validation;
+import com.jdkgroup.atomic.Validation.CountryCode;
 import com.jdkgroup.atomic.R;
 
 public class LoginActivity extends AppCompatActivity {
@@ -22,12 +21,12 @@ public class LoginActivity extends AppCompatActivity {
         final EditText passwordEditText = findViewById(R.id.editText_password);
         passwordEditText.setTransformationMethod(PasswordTransformationMethod.getInstance());
 
-        Validation.with().validationType(Validation.PASSWORD).as(ErrorResponse.class).setCallback((e) -> {
-            System.out.println("Tag" + e);
+        CountryCode.with().countryCodeTypeType(CountryCode.COUNTRY).as().setCallback((result) -> {
+            System.out.println("Tag" + result.toString());
         });
 
-        Validation.with().validationType(Validation.EMAIL).as(ErrorResponse.class).setCallback((e) -> {
-            System.out.println("Tag" + e);
+        CountryCode.with().countryCodeTypeType(CountryCode.COUNTRY_CODE).as().setCallback((result) -> {
+            System.out.println("Tag" + result);
         });
 
         findViewById(R.id.button_login).setOnClickListener(v -> {
